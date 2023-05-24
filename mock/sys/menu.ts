@@ -235,6 +235,27 @@ const linkRoute = {
   ],
 };
 
+const blogRoute = {
+  path: '/blog',
+  name: 'Blog',
+  component: 'LAYOUT',
+  meta: {
+    icon: 'ion:tv-outline',
+    title: 'routes.occy.blog.moduleName',
+  },
+  children: [
+    {
+      path: 'role',
+      name: 'BlogContentManagement',
+      meta: {
+        title: 'routes.occy.blog.content',
+        ignoreKeepAlive: true,
+      },
+      component: '/blog/content/index',
+    },
+  ],
+};
+
 export default [
   {
     url: '/basic-api/getMenuList',
@@ -254,11 +275,11 @@ export default [
       switch (id) {
         case '1':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[0].path;
-          menu = [dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute];
+          menu = [dashboardRoute, authRoute, levelRoute, sysRoute, linkRoute, blogRoute];
           break;
         case '2':
           dashboardRoute.redirect = dashboardRoute.path + '/' + dashboardRoute.children[1].path;
-          menu = [dashboardRoute, authRoute, levelRoute, linkRoute];
+          menu = [dashboardRoute, authRoute, levelRoute, linkRoute, blogRoute];
           break;
         default:
           menu = [];
